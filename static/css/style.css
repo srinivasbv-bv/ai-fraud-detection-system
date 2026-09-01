@@ -1,0 +1,121 @@
+:root {
+    --bg-primary: #0f172a;
+    --bg-secondary: #1e293b;
+    --bg-card: #334155;
+    --text-main: #f8fafc;
+    --text-muted: #cbd5e1; /* Brighter text for high readability */
+    --accent-blue: #38bdf8;
+    --accent-green: #22c55e;
+    --accent-amber: #f59e0b;
+    --accent-red: #ef4444;
+    --accent-purple: #a855f7;
+    --border-color: #475569;
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-main);
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar {
+    background-color: var(--bg-secondary);
+    min-height: 100vh;
+    border-right: 1px solid var(--border-color);
+}
+
+.sidebar .nav-link {
+    color: var(--text-muted);
+    font-weight: 500;
+    padding: 12px 20px;
+    border-radius: 8px;
+    margin-bottom: 4px;
+    transition: all 0.2s ease;
+}
+
+.sidebar .nav-link:hover, .sidebar .nav-link.active {
+    color: var(--text-main);
+    background-color: rgba(56, 189, 248, 0.15);
+    border-left: 4px solid var(--accent-blue);
+}
+
+.sidebar .nav-link i {
+    margin-right: 10px;
+    width: 20px;
+}
+
+.card-custom {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    margin-bottom: 24px;
+}
+
+.card-header-custom {
+    background-color: rgba(255,255,255,0.03);
+    border-bottom: 1px solid var(--border-color);
+    padding: 16px 20px;
+    font-weight: 600;
+    color: var(--accent-blue);
+}
+
+.form-label {
+    color: #e2e8f0 !important;
+    font-weight: 600 !important;
+    font-size: 0.9rem !important;
+    margin-bottom: 6px !important;
+}
+
+.kpi-card {
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+    border-left: 4px solid var(--accent-blue);
+}
+
+.kpi-title {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+}
+
+.kpi-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.badge-approve {
+    background-color: rgba(34, 197, 94, 0.2);
+    color: var(--accent-green);
+    border: 1px solid var(--accent-green);
+}
+
+.badge-stepup {
+    background-color: rgba(245, 158, 11, 0.2);
+    color: var(--accent-amber);
+    border: 1px solid var(--accent-amber);
+}
+
+.badge-block {
+    background-color: rgba(239, 68, 68, 0.2);
+    color: var(--accent-red);
+    border: 1px solid var(--accent-red);
+}
+
+.table-dark-custom {
+    color: var(--text-main);
+}
+
+.table-dark-custom th {
+    background-color: rgba(0,0,0,0.3);
+    border-color: var(--border-color);
+    color: #e2e8f0;
+}
+
+.table-dark-custom td {
+    border-color: var(--border-color);
+    vertical-align: middle;
+}

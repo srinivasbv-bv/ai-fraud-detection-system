@@ -1,0 +1,34 @@
+{% extends 'layout.html' %}
+
+{% block title %}Analyst Queue | AI Fraud Detection System{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-3 mb-4 border-bottom border-secondary">
+    <h1 class="h2 text-light"><i class="fa-solid fa-list-check text-info me-2"></i>Fraud Analyst Review Queue</h1>
+    <div class="btn-group">
+        <button class="btn btn-outline-secondary btn-sm" onclick="loadAnalystQueue()">Refresh Queue</button>
+    </div>
+</div>
+
+<div class="card card-custom p-3">
+    <div class="table-responsive">
+        <table class="table table-dark-custom align-middle">
+            <thead>
+                <tr>
+                    <th>Txn ID</th>
+                    <th>Account ID</th>
+                    <th>Decision</th>
+                    <th>Risk Score</th>
+                    <th>Fraud Category</th>
+                    <th>OWASP API Ref</th>
+                    <th>Status</th>
+                    <th>Analyst Action</th>
+                </tr>
+            </thead>
+            <tbody id="transactionsTableBody">
+                <!-- Dynamically populated via main.js -->
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
