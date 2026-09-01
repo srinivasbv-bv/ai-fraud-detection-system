@@ -2,9 +2,11 @@ import os
 
 # Base Directories
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+IS_VERCEL = "VERCEL" in os.environ or os.environ.get("AWS_LAMBDA_FUNCTION_NAME")
+
 DATA_DIR = os.path.join(BASE_DIR, 'data')
 MODELS_DIR = os.path.join(BASE_DIR, 'models')
-LOGS_DIR = os.path.join(BASE_DIR, 'logs')
+LOGS_DIR = "/tmp" if IS_VERCEL else os.path.join(BASE_DIR, 'logs')
 
 # File Paths
 TABULAR_DATASET_PATH = os.path.join(DATA_DIR, 'tabular_transactions.csv')
@@ -32,7 +34,7 @@ WEIGHT_RULES = 0.15
 # Sequence Sliding Window Length
 SEQUENCE_LENGTH = 10
 
-# OWASP & PCI DSS Framework Mappings (as specified in MSc CS Synopsis Table)
+# OWASP & PCI DSS Framework Mappings
 FRAUD_FRAMEWORK_MAPPINGS = {
     "CNP_FRAUD": {
         "name": "Card-Not-Present (CNP) Fraud",

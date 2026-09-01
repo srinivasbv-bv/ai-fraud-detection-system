@@ -9,8 +9,6 @@ env/
 .env
 logs/*.ndjson
 data/*.csv
-models/*.pkl
-models/*.h5
 .vercel/
 .idea/
 .vscode/
