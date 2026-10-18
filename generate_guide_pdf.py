@@ -141,8 +141,8 @@ def build_pdf(filename="Project_Setup_and_Deployment_Guide.pdf"):
         'Code_Custom',
         parent=styles['Normal'],
         fontName='Courier',
-        fontSize=8.5,
-        leading=12,
+        fontSize=9,
+        leading=13,
         textColor=c_code_text
     )
 
@@ -169,7 +169,7 @@ def build_pdf(filename="Project_Setup_and_Deployment_Guide.pdf"):
         ]))
         return t
 
-    def make_callout(text, title="TIP / NOTE"):
+    def make_callout(text, title="IMPORTANT NOTICE"):
         content = [
             Paragraph(f"<b>{title}:</b> {text}", note_style)
         ]
@@ -225,8 +225,8 @@ def build_pdf(filename="Project_Setup_and_Deployment_Guide.pdf"):
 
     # Section 2: Prerequisites
     story.append(Paragraph("2. System Prerequisites", h1_style))
-    story.append(Paragraph("Make sure your system has the following installed before proceeding:", body_style))
-    story.append(Paragraph("• <b>Python 3.10, 3.11, or 3.12:</b> Download from <i>python.org</i>. <b>Important:</b> Check the box <i>'Add Python to PATH'</i> during installation.", bullet_style))
+    story.append(Paragraph("Make sure your computer has the following installed before proceeding:", body_style))
+    story.append(Paragraph("• <b>Python 3.10, 3.11, or 3.12:</b> Download from <i>python.org</i>. <b>Important:</b> Ensure <i>'Add Python to PATH'</i> was checked during installation.", bullet_style))
     story.append(Paragraph("• <b>Git:</b> Download and install from <i>git-scm.com</i>.", bullet_style))
     story.append(Paragraph("• <b>Modern Web Browser:</b> Chrome, Edge, Firefox, or Brave.", bullet_style))
     story.append(Spacer(1, 8))
@@ -235,59 +235,63 @@ def build_pdf(filename="Project_Setup_and_Deployment_Guide.pdf"):
     story.append(Paragraph("3. Running Locally Using Command Prompt (CMD) Inside Project Folder", h1_style))
     story.append(Paragraph(
         "<b>YES! You can run the entire project directly using Windows Command Prompt (CMD) inside the project folder.</b> "
-        "In fact, running in CMD inside the folder is the easiest and most recommended method because it avoids PowerShell script execution policy errors.",
+        "Running in CMD inside the folder is the easiest and most recommended method because it avoids PowerShell script execution policy errors.",
         body_style
     ))
-    story.append(Spacer(1, 4))
-
-    story.append(Paragraph("Step 3.1 — How to Open CMD Directly Inside the Project Folder (The 2-Second Shortcut)", h2_style))
-    story.append(Paragraph(
-        "You do NOT need to type long paths or use complex <code>cd</code> commands. Follow this simple shortcut:",
-        body_style
-    ))
-    story.append(Paragraph("1. Open the <code>ai_fraud_detection_system</code> project folder in Windows File Explorer.", bullet_style))
-    story.append(Paragraph("2. Click on the <b>address / location bar</b> at the top of the folder window (where the folder path is shown).", bullet_style))
-    story.append(Paragraph("3. Type <b><code>cmd</code></b> and press <b>Enter</b> on your keyboard.", bullet_style))
-    story.append(Paragraph("4. A black Command Prompt window will instantly open, <b>already located inside your project folder!</b>", bullet_style))
     story.append(Spacer(1, 4))
 
     story.append(make_callout(
-        "Whenever you open CMD via the File Explorer address bar, the prompt automatically displays your project folder path. You are immediately ready to run project commands!",
-        "EXPLORER SHORTCUT"
+        "Only type or copy the EXACT commands shown inside the dark code boxes below. Do NOT type English instructions or descriptions into the Command Prompt window!",
+        "HOW TO USE COMMANDS"
     ))
     story.append(Spacer(1, 6))
 
-    story.append(Paragraph("Step 3.2 — Create & Activate Virtual Environment in CMD", h2_style))
+    story.append(Paragraph("Step 3.1 — Open CMD Inside the Project Folder (The 2-Second Shortcut)", h2_style))
     story.append(Paragraph(
-        "Inside your opened CMD window, run the following commands to create and activate an isolated Python environment:",
+        "You do not need to type folder paths or use complex <code>cd</code> commands. Follow this simple shortcut:",
         body_style
     ))
-    story.append(make_code_box(
-        ":: Create a virtual environment named 'venv'\n"
-        "python -m venv venv\n\n"
-        ":: Activate the virtual environment in CMD\n"
-        "venv\\Scripts\\activate"
-    ))
+    story.append(Paragraph("1. Open the project folder in Windows File Explorer.", bullet_style))
+    story.append(Paragraph("2. Click on the <b>address / location bar</b> at the top of the folder window (where the folder path is shown).", bullet_style))
+    story.append(Paragraph("3. Type <b><code>cmd</code></b> and press <b>Enter</b> on your keyboard.", bullet_style))
+    story.append(Paragraph("4. A Command Prompt window will open instantly, <b>already located inside your project folder!</b>", bullet_style))
+    story.append(Spacer(1, 6))
+
+    story.append(Paragraph("Step 3.2 — Create the Virtual Environment", h2_style))
     story.append(Paragraph(
-        "Once activated, you will see <b><code>(venv)</code></b> appear at the very beginning of your CMD line.",
+        "Inside your opened CMD window, type the following command and press <b>Enter</b>:",
+        body_style
+    ))
+    story.append(make_code_box("python -m venv venv"))
+    story.append(Paragraph(
+        "Wait a few seconds for Python to create the <code>venv</code> folder.",
         body_style
     ))
     story.append(Spacer(1, 6))
 
-    story.append(Paragraph("Step 3.3 — Install Project Dependencies", h2_style))
-    story.append(Paragraph("Run the pip installation command inside CMD:", body_style))
+    story.append(Paragraph("Step 3.3 — Activate the Virtual Environment", h2_style))
+    story.append(Paragraph(
+        "Now type this command in CMD and press <b>Enter</b>:",
+        body_style
+    ))
+    story.append(make_code_box("venv\\Scripts\\activate"))
+    story.append(Paragraph(
+        "Once activated, you will see <b><code>(venv)</code></b> appear at the very beginning of your CMD prompt line.",
+        body_style
+    ))
+    story.append(Spacer(1, 6))
+
+    story.append(Paragraph("Step 3.4 — Install Project Dependencies", h2_style))
+    story.append(Paragraph("Install the required libraries by running this command in CMD:", body_style))
     story.append(make_code_box("pip install -r requirements.txt"))
     story.append(Spacer(1, 6))
 
-    story.append(Paragraph("Step 3.4 — Verify System Tests (Optional & Fast)", h2_style))
+    story.append(Paragraph("Step 3.5 — Verify System Tests (Optional & Fast)", h2_style))
     story.append(Paragraph("Run the automated verification suite to verify that dataset loading and ML models pass 100%:", body_style))
-    story.append(make_code_box(
-        ":: Run system test suite (100% passing check)\n"
-        "python test_system.py"
-    ))
+    story.append(make_code_box("python test_system.py"))
     story.append(Spacer(1, 6))
 
-    story.append(Paragraph("Step 3.5 — Start the Web Application Server", h2_style))
+    story.append(Paragraph("Step 3.6 — Start the Web Application Server", h2_style))
     story.append(Paragraph("Launch the Flask application engine from your CMD window:", body_style))
     story.append(make_code_box("python app.py"))
     story.append(Paragraph(
@@ -297,7 +301,7 @@ def build_pdf(filename="Project_Setup_and_Deployment_Guide.pdf"):
     ))
     story.append(Spacer(1, 6))
 
-    story.append(Paragraph("Step 3.6 — Launch Live Real-Time Payment Stream (In a Second CMD Window)", h2_style))
+    story.append(Paragraph("Step 3.7 — Launch Live Real-Time Payment Stream (In a Second CMD Window)", h2_style))
     story.append(Paragraph(
         "To simulate real-time live payments arriving at the system every 2.5 seconds:",
         body_style
@@ -364,28 +368,22 @@ def build_pdf(filename="Project_Setup_and_Deployment_Guide.pdf"):
 
     story.append(Paragraph("Step 5.2 — Run Git Commands in CMD", h2_style))
     story.append(Paragraph(
-        "Inside your CMD window located in the project folder, run the following commands sequentially. "
-        "Replace <code>&lt;YOUR_GITHUB_USERNAME&gt;</code> and <code>&lt;YOUR_REPOSITORY_NAME&gt;</code> with your actual GitHub username and repo name:",
+        "In your CMD window, run these commands one by one. Replace <code>&lt;YOUR_GITHUB_USERNAME&gt;</code> and <code>&lt;YOUR_REPOSITORY_NAME&gt;</code> with your actual GitHub username and repository name:",
         body_style
     ))
     story.append(make_code_box(
-        ":: 1. Configure your Git identity (one-time setup)\n"
         "git config user.name \"Your Name\"\n"
-        "git config user.email \"your_email@example.com\"\n\n"
-        ":: 2. Initialize and stage all project files\n"
+        "git config user.email \"your_email@example.com\"\n"
         "git init\n"
         "git add .\n"
-        "git commit -m \"Initial commit of AI Fraud Detection System\"\n\n"
-        ":: 3. Set branch to main\n"
-        "git branch -M main\n\n"
-        ":: 4. Link your GitHub repository\n"
-        "git remote add origin https://github.com/<YOUR_GITHUB_USERNAME>/<YOUR_REPOSITORY_NAME>.git\n\n"
-        ":: 5. Push code to GitHub\n"
+        "git commit -m \"Initial commit of AI Fraud Detection System\"\n"
+        "git branch -M main\n"
+        "git remote add origin https://github.com/<YOUR_GITHUB_USERNAME>/<YOUR_REPOSITORY_NAME>.git\n"
         "git push -u origin main"
     ))
     story.append(Spacer(1, 6))
     story.append(make_callout(
-        "If your project already has a remote configured, simply update it using: "
+        "If a remote origin is already attached, update it using: "
         "<code>git remote set-url origin https://github.com/&lt;YOUR_GITHUB_USERNAME&gt;/&lt;YOUR_REPOSITORY_NAME&gt;.git</code> and then run <code>git push -u origin main</code>.",
         "GIT REMOTE UPDATE"
     ))
@@ -437,6 +435,10 @@ def build_pdf(filename="Project_Setup_and_Deployment_Guide.pdf"):
     faq_data = [
         [Paragraph("<b>Scenario / Question</b>", body_style), Paragraph("<b>CMD Solution & Explanation</b>", body_style)],
         [
+            Paragraph("<b>'Create' is not recognized</b>", body_style),
+            Paragraph("Do not type English description sentences into CMD. Only run the Python command: <code>python -m venv venv</code>.", body_style)
+        ],
+        [
             Paragraph("<b>'python' is not recognized in CMD</b>", body_style),
             Paragraph("Python was not added to your Windows PATH during installation. Re-run the Python installer, select <b>Modify</b>, and ensure <b>'Add Python to environment variables'</b> is checked.", body_style)
         ],
@@ -447,10 +449,6 @@ def build_pdf(filename="Project_Setup_and_Deployment_Guide.pdf"):
         [
             Paragraph("<b>How to stop the server in CMD?</b>", body_style),
             Paragraph("Press <b>Ctrl + C</b> in the Command Prompt window to cleanly stop the Flask application or the live streaming simulator.", body_style)
-        ],
-        [
-            Paragraph("<b>Git Authentication Error on Push</b>", body_style),
-            Paragraph("GitHub requires a <b>Personal Access Token (PAT)</b> or GitHub Credential Manager. Generate a token under <i>GitHub Settings &gt; Developer Settings &gt; Personal Access Tokens</i> if prompted.", body_style)
         ]
     ]
     t_faq = Table(faq_data, colWidths=[150, letter[0] - 108 - 150])

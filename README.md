@@ -138,13 +138,20 @@ ai_fraud_detection_system/
 
 ### Installation
 
-1. Navigate to the project directory:
+1. Navigate to the project directory in Command Prompt (CMD):
+   *Shortcut: Open the folder in Windows File Explorer, click the top address bar, type `cmd`, and press Enter.*
    ```bash
-   cd C:\Users\Srinivas\.gemini\antigravity\scratch\ai_fraud_detection_system
+   cd path/to/ai_fraud_detection_system
    ```
 
-2. Install Python dependencies:
-   ```bash
+2. (Recommended) Create and activate virtual environment:
+   ```cmd
+   python -m venv venv
+   venv\Scripts\activate
+   ```
+
+3. Install Python dependencies:
+   ```cmd
    pip install -r requirements.txt
    ```
 
